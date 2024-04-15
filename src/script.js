@@ -21,8 +21,11 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 //initial position of the camera of gallery room
-camera.position.set(-4.9, 4.4, 1.9);
-camera.rotation.set(-0.9, -0.8, -0.8);
+//camera.position.set(-4.9, 4.4, 1.9);
+//camera.rotation.set(-0.9, -0.8, -0.8);
+//initial position of the camera of room 2
+camera.position.set(-0.2, -0.19, -2.4);
+camera.rotation.set(3.06, -0.09, -3.13);
 
 camera.position.z = 2;
 
@@ -41,7 +44,7 @@ let position = 0;
 
 //gltf loader
 const gltfLoader = new GLTFLoader();
-gltfLoader.load("/model/gallery/serve_room.glb", (gltf) => {
+gltfLoader.load("/model/apartment/a1.glb", (gltf) => {
   console.log("Our model here!", gltf);
   const model = gltf.scene;
   scene.add(model);
@@ -84,7 +87,8 @@ gltfLoader.load("/model/gallery/serve_room.glb", (gltf) => {
   //   }
   // });
 });
-//click để chuyển sang góc nhìn khác //  room 3 //serve_room
+
+//click để chuyển sang góc nhìn khác //  room 2
 window.addEventListener("mouseup", function () {
   switch (position) {
     case 0:
@@ -94,12 +98,28 @@ window.addEventListener("mouseup", function () {
       break;
 
     case 1:
-      cameraMovement(2, 1, 0.5);
+      cameraMovement(1, 1, 0.5);
       cameraRotation(0.14, 0.8, -0.109);
       position = 0;
       break;
   }
 });
+//click để chuyển sang góc nhìn khác //  room 3 //serve_room
+// window.addEventListener("mouseup", function () {
+//   switch (position) {
+//     case 0:
+//       cameraMovement(0.48, 1.09, -2.11);
+//       cameraRotation(-3.12, 0.22, 3.13);
+//       position = 1;
+//       break;
+
+//     case 1:
+//       cameraMovement(2, 1, 0.5);
+//       cameraRotation(0.14, 0.8, -0.109);
+//       position = 0;
+//       break;
+//   }
+// });
 // });
 
 function cameraMovement(x, y, z) {
